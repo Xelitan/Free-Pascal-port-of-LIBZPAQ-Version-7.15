@@ -19,7 +19,7 @@ http://mattmahoney.net/zpaq/
 Usage- packing:
 
 ```
-use ZpaqClasses;
+uses ZpaqClasses;
 [...]
 
 p := TZpaqPacker.Create('pack.zpaq');  
@@ -35,7 +35,7 @@ p.Free;
 Usage - listing and unpacking:
 
 ```
-use ZpaqClasses;
+uses ZpaqClasses;
 [...]
 u := TZpaqUnpacker.Create('pack.zpaq');
 while u.NextEntry(name, size, date) do begin
@@ -50,7 +50,7 @@ u.Free;
 
 All at once:
 ```
-use ZpaqSimple;
+uses ZpaqSimple;
 [...]
 function CompressStreams(Infile, Outfile: TStream): Integer;
 function DecompressStreams(Infile, Outfile: TStream): Integer;
