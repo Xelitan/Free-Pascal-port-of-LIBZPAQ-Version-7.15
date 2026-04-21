@@ -19,6 +19,9 @@ http://mattmahoney.net/zpaq/
 Usage- packing:
 
 ```
+use ZpaqClasses;
+[...]
+
 p := TZpaqPacker.Create('pack.zpaq');  
 p.SetMethod(1);
 
@@ -32,6 +35,8 @@ p.Free;
 Usage - listing and unpacking:
 
 ```
+use ZpaqClasses;
+[...]
 u := TZpaqUnpacker.Create('pack.zpaq');
 while u.NextEntry(name, size, date) do begin
 
@@ -41,4 +46,18 @@ while u.NextEntry(name, size, date) do begin
 
 end;
 u.Free;                     
+```
+
+All at once:
+```
+use ZpaqSimple;
+[...]
+function CompressStreams(Infile, Outfile: TStream): Integer;
+function DecompressStreams(Infile, Outfile: TStream): Integer;
+
+function CompressFile(Infilename, Outfilename: String): Integer;
+function DecompressFile(Infilename, Outfilename: String): Integer;
+
+function Zpaq(Uncompressed: AnsiString): AnsiString;
+function UnZpaq(Compressed: AnsiString): AnsiString;
 ```
