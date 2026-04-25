@@ -52,11 +52,11 @@ All at once:
 ```
 uses ZpaqSimple;
 [...]
-function CompressStreams(Infile, Outfile: TStream): Integer;
-function DecompressStreams(Infile, Outfile: TStream): Integer;
+function ZpaqCompressStreams(Infile, Outfile: TStream): Integer;
+function ZpaqDecompressStreams(Infile, Outfile: TStream): Integer;
 
-function CompressFile(Infilename, Outfilename: String): Integer;
-function DecompressFile(Infilename, Outfilename: String): Integer;
+function ZpaqCompressFile(const Infilename, Outfilename: String): Integer;
+function ZpaqDecompressFile(const Infilename, Outfilename: String): Integer;
 
 function Zpaq(Uncompressed: AnsiString): AnsiString;
 function UnZpaq(Compressed: AnsiString): AnsiString;
