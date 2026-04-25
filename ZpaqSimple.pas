@@ -8,18 +8,18 @@ interface
 
 uses Classes, SysUtils, libzpaq, ZpaqClasses;
 
-function CompressStreams(Infile, Outfile: TStream): Integer;
-function DecompressStreams(Infile, Outfile: TStream): Integer;
+function ZpaqCompressStreams(Infile, Outfile: TStream): Integer;
+function ZpaqDecompressStreams(Infile, Outfile: TStream): Integer;
 
-function CompressFile(Infilename, Outfilename: String): Integer;
-function DecompressFile(Infilename, Outfilename: String): Integer;
+function ZpaqCompressFile(const Infilename, Outfilename: String): Integer;
+function ZpaqDecompressFile(const Infilename, Outfilename: String): Integer;
 
 function Zpaq(Uncompressed: AnsiString): AnsiString;
 function UnZpaq(Compressed: AnsiString): AnsiString;
 
 implementation
 
-function CompressStreams(Infile, Outfile: TStream): Integer;
+function ZpaqCompressStreams(Infile, Outfile: TStream): Integer;
 var
   InBridge  : TReadBridge;
   OutBridge : TWriteBridge;
@@ -63,7 +63,7 @@ begin
   end;
 end;
 
-function DecompressStreams(Infile, Outfile: TStream): Integer;
+function ZpaqDecompressStreams(Infile, Outfile: TStream): Integer;
 var
   InBridge  : TReadBridge;
   OutBridge : TWriteBridge;
@@ -132,7 +132,7 @@ begin
   end;
 end;
 
-function CompressFile(Infilename, Outfilename: String): Integer;
+function ZpaqCompressFile(const Infilename, Outfilename: String): Integer;
 var
   InFile: TFileStream;
   OutFile: TFileStream;
@@ -157,7 +157,7 @@ begin
         Exit;
       end;
 
-      Result := CompressStreams(InFile, OutFile);
+      Result := ZpaqCompressStreams(InFile, OutFile);
     finally
       OutFile.Free;
     end;
@@ -166,7 +166,7 @@ begin
   end;
 end;
 
-function DecompressFile(Infilename, Outfilename: String): Integer;
+function ZpaqDecompressFile(const Infilename, Outfilename: String): Integer;
 var
   InFile: TFileStream;
   OutFile: TFileStream;
@@ -191,7 +191,7 @@ begin
         Exit;
       end;
 
-      Result := DecompressStreams(InFile, OutFile);
+      Result := ZpaqDecompressStreams(InFile, OutFile);
     finally
       OutFile.Free;
     end;
@@ -214,7 +214,7 @@ begin
     InStream.Position := 0;
 
     // pack
-    if CompressStreams(InStream, OutStream) <> 0 then
+    if ZpaqCompressStreams(InStream, OutStream) <> 0 then
       Exit;
 
     // stream to string
@@ -244,7 +244,7 @@ begin
     InStream.Position := 0;
 
     // unpack
-    if DecompressStreams(InStream, OutStream) <> 0 then
+    if ZpaqDecompressStreams(InStream, OutStream) <> 0 then
       Exit;
 
     // stream to string
