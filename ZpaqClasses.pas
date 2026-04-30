@@ -147,8 +147,6 @@ type
                          OnFilter: TZpaqFilterEvent = nil);
   end;
 
-implementation
-
 { ================================================================== }
 {  Internal bridge streams                                             }
 { ================================================================== }
@@ -176,6 +174,10 @@ type
     procedure put(c: Integer); override;
     procedure bwrite(buf: PU8; n: Integer); override;
   end;
+
+implementation
+
+type
 
   { Appends to a file (creates the file if it does not exist) }
   TFileAppendWriter = class(TZPAQLStream)
