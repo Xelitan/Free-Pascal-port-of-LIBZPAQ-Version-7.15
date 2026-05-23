@@ -1,5 +1,7 @@
 unit ZpaqSimple;
 
+{$mode delphi}
+
 //Pascal port of LIBZPAQ Version 7.15 (Aug. 17, 2016)
 //Port by www.xelitan.com
 //License: MIT
@@ -14,8 +16,8 @@ function ZpaqDecompressStreams(Infile, Outfile: TStream): Integer;
 function ZpaqCompressFile(const Infilename, Outfilename: String): Integer;
 function ZpaqDecompressFile(const Infilename, Outfilename: String): Integer;
 
-function Zpaq(Uncompressed: AnsiString): AnsiString;
-function UnZpaq(Compressed: AnsiString): AnsiString;
+function Zpaq(const Uncompressed: AnsiString): AnsiString;
+function UnZpaq(const Compressed: AnsiString): AnsiString;
 
 implementation
 
@@ -200,7 +202,7 @@ begin
   end;
 end;
 
-function Zpaq(Uncompressed: AnsiString): AnsiString;
+function Zpaq(const Uncompressed: AnsiString): AnsiString;
 var
   InStream, OutStream: TMemoryStream;
 begin
@@ -230,7 +232,7 @@ begin
   end;
 end;
 
-function UnZpaq(Compressed: AnsiString): AnsiString;
+function UnZpaq(const Compressed: AnsiString): AnsiString;
 var
   InStream, OutStream: TMemoryStream;
 begin
